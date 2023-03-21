@@ -1,24 +1,73 @@
-import logo from './logo.svg';
 import './App.css';
+
+function InventoryTitle() {
+  return (
+      <h1>Zach's Shop Inventory</h1>
+  );
+}
+
+function InventoryDescription() {
+  return (
+    <>
+      <p>This is page includes information about various items and how many are remaining for Zach's store.</p>
+      <p>Items that have more than 3 available will appear green and items that have 3 or less will appear red.</p>
+    </>
+  );
+}
+
+const items = [
+  {id: 1, name: "Laptop", qty: 5, isAvailable: true},
+  {id: 2, name: "Desktop", qty: 2, isAvailable: false},
+  {id: 3, name: "VR headset", qty: 3, isAvailable: false},
+]
+
+function InventoryTable() {
+  const listItems = items.map( items =>
+    <>
+    <tr>
+    <td
+    key={items.id}
+    >
+{items.id}
+    </td>
+    <td
+    key={items.name}
+    >
+{items.name}
+    </td>
+    <td
+    key={items.qty}
+    style={{
+      color: items.isAvailable ? 'green' : 'red'
+    }}
+    >
+{items.qty}
+    </td>
+    </tr>
+    </>
+  )
+  return (
+    <>
+<table>
+<th>ID</th>
+    <th>Name</th>
+    <th>Quantity</th>
+  {listItems}
+</table>
+    </>
+    );
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Zach and MSU!
-        </a>
+      <InventoryTitle/>
+      <InventoryDescription/>
+      <InventoryTable/>
       </header>
     </div>
+    
   );
 }
 
