@@ -11,7 +11,7 @@ function Library() {
   }
   getBooks();
   return (
-    <table>
+    <table className="book-table">
     {
       myBooks.map(b => (
         <tr>
